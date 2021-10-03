@@ -1,0 +1,62 @@
+@import "../../styles/includes/variables";
+
+.testApp .search {
+    background-color: #fff;
+    margin-bottom: 40px;
+    display: grid;
+    box-shadow: 0 3px 7px 0 rgb(221, 220, 220);
+    grid-template-columns: 20px 2fr 120px 200px;
+    position: relative;
+    grid-row-gap: 10px;
+
+    :nth-child(-n+3){
+      margin:10px;
+    }
+    
+    input[type='text'] {
+      border: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: lightgray;
+      }
+    }
+
+    input[type='checkbox'] {
+      position: relative;
+      cursor: pointer;
+
+      &:after {
+        content: 'Show PII only';
+        position: absolute;
+        left: 18px;
+        width: 90px;
+      }
+    }
+
+    .apply {
+      background-color: $color-main;
+      border: none;
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($color-main, 5%);
+      }
+    }
+
+    .reset {
+      color: $color-title;
+      position:absolute;
+      right: 0;
+      bottom: -20px;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      user-select: none;
+    }
+  }

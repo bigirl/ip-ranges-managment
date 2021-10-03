@@ -1,0 +1,23 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 99%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    background: $color-bg;
+    color: $color-text;
+    padding: 0px;
+  }
+  
+  h1, h2, h3 {
+    margin: 0px;
+  }
+  
+  p, button, input {
+    margin: 0px;
+    font-size: 11px;
+  }

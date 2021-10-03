@@ -1,0 +1,12 @@
+@import "./includes/variables";
+@import "./includes/reset";
+
+.testApp {
+  margin: 20px 10%;
+  
+  main {
+    background-color: $color-bg-main;
+    box-shadow: inset 0 5px 15px -10px rgb(221, 220, 220);
+    padding: 20px;
+  }
+}
