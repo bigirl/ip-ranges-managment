@@ -1,26 +1,18 @@
-export const ACTIVE_TAB_REQUEST = "request";
-export const ACTIVE_TAB_RESPONSE = "response";
+export const RULE_INTERNAL = "Internal";
+export const RULE_EXTERNAL = "External";
 
-export const DEFAULT_API = "api.someurl.com";
-export const DEFAULT_METHOD = "get";
-export const DEFAULT_PATH = "somepath/home";
+export const MODE_ADD = "mode_add";
+export const MODE_EDIT = "mode_edit";
 
 export const defaultState = {
-    api: DEFAULT_API,
-    method: DEFAULT_METHOD,
-    path: DEFAULT_PATH,
-    response: null,
-    request: null,
-    activeTab: ACTIVE_TAB_REQUEST,
-    showPIIonly: false,
-    searchText: ""
+    groups: null,
+    popupMode: false // false || MODE_ADD || MODE_EDIT
 };
 
 export const actionTypes = {
-    SET_PII: "SET_PII",
-    SET_MASKED: "SET_MASKED",
-    SET_ACTIVE_TAB: "SET_ACTIVE_TAB",
-    PRE_FETCH_DATA: "PRE_FETCH_DATA",
-    SEARCH_ITEMS: "SEARCH_ITEMS",
-    RESET_FILTERS: "RESET_FILTERS"
+    ADD_GROUP: "ADD_GROUP",
+    EDIT_GROUP: "EDIT_GROUP",
+    DELETE_GROUP: "DELETE_GROUP",
+    UPDATE_POPUP_MODE: "UPDATE_POPUP_MODE",
+    PRE_FETCH_DATA: "PRE_FETCH_DATA"
 }

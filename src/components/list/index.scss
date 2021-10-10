@@ -1,13 +1,13 @@
 @import "../../styles/includes/variables";
 
-.testApp  .list{
+.testApp .groups{
     background-color: #fff;
     border: 1px solid $color-border;
 
     .row {
         display: grid;
         padding: 10px;
-        grid-template-columns: 2fr 70px 70px 1fr;
+        grid-template-columns: 1fr 1fr 1fr 200px 50px;
         grid-template-rows: 18px;
         column-gap: 30px;
         row-gap: 10px;
@@ -24,89 +24,50 @@
         }
     }
 
-    .toggle {
-        display: grid;
     
-        &.disabled {
-          svg, h4 {
-            cursor: default;
-            color:lightgray;
-          }
-        }
-    
-        svg {
-          color: $color-title;
-        }
-    
-        h4 {
-          margin: 2px 0;
-          padding: 15px;
-          cursor: pointer;
-          user-select: none;
-          z-index: 1;
-          text-transform: capitalize;
+        
+         
+
+        .row {
+
+          button {
+              border: 1px solid $color-pii;
+              text-transform: uppercase;
+              width: 70px;
+              cursor: pointer;
+  
+              &.pii {
+                  color: $color-pii;
       
-          svg {
-            margin-right: 5px;
+                  &.on {
+                      color: #fff;
+                      background-color: $color-pii;
+                  }
+              }
+      
+              &.masked {
+                  color: $color-title;
+                  border-color: $color-title;
+      
+                  &.on {
+                      color: #fff;
+                      background-color: $color-title;
+                  }
+              }
+          }
+  
+          .item-type {
+              border: 1px solid $color-type-border;
+              color: $color-type-text;
+              background-color: $color-type-bg;
+              text-transform: uppercase;
+              padding: 5px 10px;
+              text-align: center;
+              line-height: 7px;
+              width: 70px;
+              user-select: none;
           }
         }
-    
-        .toggle-content {
-          padding: 0 20px;
-          height: 0;
-          opacity: 0;
-          transition: 0.1s;
-          z-index: 0;
-          display: grid;
-          grid-row-gap: 20px;
-
-          &.open {
-            opacity: 1;
-            height: auto;
-            padding: 20px;
-          }
-
-          .row {
-            box-shadow: 0 3px 7px 0 rgb(221, 220, 220);
-
-            button {
-                border: 1px solid $color-pii;
-                text-transform: uppercase;
-                width: 70px;
-                cursor: pointer;
-    
-                &.pii {
-                    color: $color-pii;
         
-                    &.on {
-                        color: #fff;
-                        background-color: $color-pii;
-                    }
-                }
-        
-                &.masked {
-                    color: $color-title;
-                    border-color: $color-title;
-        
-                    &.on {
-                        color: #fff;
-                        background-color: $color-title;
-                    }
-                }
-            }
     
-            .item-type {
-                border: 1px solid $color-type-border;
-                color: $color-type-text;
-                background-color: $color-type-bg;
-                text-transform: uppercase;
-                padding: 5px 10px;
-                text-align: center;
-                line-height: 7px;
-                width: 70px;
-                user-select: none;
-            }
-          }
-        }
-    }
 }

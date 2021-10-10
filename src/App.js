@@ -1,17 +1,21 @@
 import React from 'react';
-import Header from './components/header';
 import List from './components/list';
-import Tabs from './components/tabs';
-import Search from './components/search';
+import { useSelector, useDispatch } from 'react-redux'
+import { updatePopupMode } from './store/actions';
+import { MODE_ADD } from './store/consts';
+import GroupForm from './components/groupForm'
 
 export default function App() {
+  const popupMode = useSelector((state) => state.popupMode);
+  const dispatch = useDispatch();
+
   return (
     <div className="testApp">
-          <Header/>
-          <Tabs/>
           <main>
-              <Search/>
-              <List/>
+            <button onClick={() => dispatch(updatePopupMode(MODE_ADD))} className="addGroup">Add Group</button>
+            {popupMode && <GroupForm/>}
+            
+            <List/> 
           </main>
       </div>
   );

@@ -1,64 +1,47 @@
 import {actionTypes} from './consts';
 
-export const resetFilters = () => {
-    return (dispatch) => {
-        dispatch({
-            type: actionTypes.RESET_FILTERS
-        })
-    }
-}
 
-export const searchItems = (showPIIonly,searchText) => {
-    return (dispatch) => {
-        dispatch({
-            type: actionTypes.SEARCH_ITEMS,
-            searchText,
-            showPIIonly
-        })
-    }
-}
 
-export const setActiveTab = (payload) => {
+export const addGroup = (payload) => {
     return (dispatch) => {
         dispatch({
-            type: actionTypes.SET_ACTIVE_TAB,
+            type: actionTypes.ADD_GROUP,
             payload
         })
     }
 }
 
-export const setPII = (payload, activeTab, group, index) => {
+export const editGroup = (payload) => {
     return (dispatch) => {
         dispatch({
-            type: actionTypes.SET_PII,
-            payload, 
-            activeTab, 
-            group, 
+            type: actionTypes.EDIT_GROUP,
+            payload
+        })
+    }
+}
+
+export const deleteGroup = (index) => {
+    return (dispatch) => {
+        dispatch({
+            type: actionTypes.DELETE_GROUP,
             index
         })
     }
 }
 
-export const setMASKED = (payload, activeTab, group, index) => {
+export const updatePopupMode = (popupMode) => {
     return (dispatch) => {
         dispatch({
-            type: actionTypes.SET_MASKED,
-            payload,
-            activeTab, 
-            group, 
-            index
+            type: actionTypes.UPDATE_POPUP_MODE,
+            popupMode
         })
     }
 }
-
 
 export const formatData = (json) => {
     return{
-        api: json.api,
-        method: json.method,
-        path: json.path,
-        response: json.response, 
-        request: json.request
+        groups: json.groups,
+        popupMode: false
     }
 };
 

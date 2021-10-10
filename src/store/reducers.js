@@ -1,45 +1,34 @@
 import {actionTypes, defaultState} from './consts';
 
 const reducer = (state = defaultState, action) => {
-    let newState, groupParent, itemArr;
-    let { activeTab, group, index} = action;
+    let newState, groupParent, group;
+    let {index, name, start, end, internal, created, popupMode} = action;
 
     switch (action.type) {
-        case actionTypes.RESET_FILTERS:
-            return Object.assign({}, state, {showPIIonly: false, searchText: ''});
-        case actionTypes.SEARCH_ITEMS:
-            return Object.assign({}, state, {showPIIonly: action.showPIIonly, searchText: action.searchText});
-        case actionTypes.SET_PII:
-            groupParent = state[activeTab][group];
-            itemArr = {...groupParent[index]};
-            itemArr.pii = action.payload;
-            groupParent[index] = itemArr;
+        case actionTypes.UPDATE_POPUP_MODE:
+            return Object.assign({}, state, {popupMode});
+        case actionTypes.ADD_GROUP:
+            groupParent = [...state.groups];
+            groupParent[index] =  {name, start, end, internal, created};
             
-            newState = Object.assign({}, state, {
-                [activeTab]: {...state[activeTab],
-                    [group]: groupParent
-                }
-            });
+            newState = Object.assign({}, state, {groups: groupParent});
             return newState;
-        case actionTypes.SET_MASKED:
-            groupParent = state[activeTab][group];
-            itemArr = {...groupParent[index]};
-            itemArr.masked = action.payload;
-            groupParent[index] = itemArr;
+        case actionTypes.EDIT_GROUP:
+            groupParent = [...state.groups];
+            group = {...groupParent[index]};
+            group.name = name;
+            groupParent[index] = group;
             
-            newState = Object.assign({}, state, {
-                [activeTab]: {...state[activeTab],
-                    [group]: groupParent
-                }
-            });
+            newState = Object.assign({}, state, {groups: groupParent});
             return newState;
-        case actionTypes.SET_ACTIVE_TAB:
-            return Object.assign({}, state, {activeTab: action.payload});
+        case actionTypes.DELETE_GROUP:
+            groupParent = [...state.groups];
+            groupParent = groupParent.slice(0, index).concat(groupParent.slice(index + 1, groupParent.length))
+            newState = Object.assign({}, state, {groups: groupParent});
+            return newState;
         case actionTypes.PRE_FETCH_DATA:
             return Object.assign({}, action.payload.data, {
-                activeTab: state.activeTab, 
-                showPIIonly: state.showPIIonly,
-                searchText: null} );
+                popupMode: false} );
         default:
             return state
                 

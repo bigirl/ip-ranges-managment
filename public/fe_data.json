@@ -1,86 +1,27 @@
 {
-    "api": "api.news.com",
-    "method": "get",
-    "path": "/v1/news/{category}",
-    "request": {
-        "urlParams": [
-            { 
-                "name": "category",
-                "pii": false,
-                "masked": false,
-                "type": "string"
-            }
-        ],
-        "queryParams": [
-            { 
-                "name": "page",
-                "pii": false,
-                "masked": false,
-                "type": "integer"
+    "groups": [
+        {
+            "name": "test1",
+            "start": {
+                "origin":"192.34.45.1",
+                "number": 3223465217
             },
-            { 
-                "name": "page_size",
-                "pii": false,
-                "masked": false,
-                "type": "integer"
+            "end" : {
+                "origin":"192.34.45.10",
+                "number": 3223465217
             },
-            { 
-                "name": "from_date",
-                "pii": false,
-                "masked": false,
-                "type": "date"
+            "internal": true,
+            "created": 1633352984
+        },
+        { 
+            "name": "test second",
+            "start": {
+                "origin":"192.34.45.1",
+                "number": 3223465217
             },
-            { 
-                "name": "to_date",
-                "pii": false,
-                "masked": false,
-                "type": "date"
-            }
-        ],
-        "headers": [
-            { 
-                "name": "token",
-                "pii": true,
-                "masked": true,
-                "type": "string"
-            },
-            { 
-                "name": "cookie",
-                "pii": true,
-                "masked": false,
-                "type": "string"
-            }
-        ],
-        "body": []
-    },
-    "response": {
-        "headers": [
-            { 
-                "name": "cookie",
-                "pii": true,
-                "masked": false,
-                "type": "string"
-            }
-        ],
-        "body": [
-            { 
-                "name": "news_items",
-                "pii": false,
-                "masked": false,
-                "type": "array"
-            },
-            { 
-                "name": "page",
-                "pii": false,
-                "masked": false,
-                "type": "integer"
-            },
-            { 
-                "name": "page_size",
-                "pii": false,
-                "masked": false,
-                "type": "integer"
-            }
-        ]
-    }
+            "end" : null,
+            "internal": false,
+            "created": 1633353073
+        }
+    ]
 }
