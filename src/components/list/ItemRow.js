@@ -7,40 +7,46 @@ import { RULE_INTERNAL, RULE_EXTERNAL } from '../../store/consts';
 import { updatePopupMode, deleteGroup } from '../../store/actions';
 import { MODE_EDIT } from '../../store/consts';
 
-const ItemRow = ({item, index}) => {
+const ItemRow = (item) => {
     const dispatch = useDispatch();
 
-    const {name, start, end, internal, created} = item;
-    const d = new Date(created).toLocaleDateString("en-US");
-    const t = new Date(created).toLocaleTimeString("en-US");
+    const {groupId, name, startRange, endRange, internal, created} = item;
+    const formatedDate = `${new Date(created).toLocaleDateString("en-US")} ${new Date(created).toLocaleTimeString("en-US")}`;
+    const ipRange = getRange();
+    function getRange() {
+        if(startRange.origin || endRange.origin) {
+            return `${startRange.origin} ${ endRange?.origin ? `-${endRange?.origin}` : ''}`;
+        }
+        return 'error';
+    }
+
     return (
-        <p key={index} className="row">
+        <p key={groupId} className="row">
             <span>{name}</span>
             <span>{internal ? RULE_INTERNAL : RULE_EXTERNAL}</span>
-            <span>{start.origin}{end && `-${end.origin}`}</span>
-            <span>{d} {t}</span>
+            <span>{ipRange}</span>
+            <span>{formatedDate}</span>
             <span>
-                <FontAwesomeIcon onClick={() => dispatch(updatePopupMode(MODE_EDIT))} icon={faEdit} size="lg" />
-                <FontAwesomeIcon onClick={() => dispatch(deleteGroup(index))} icon={faTrashAlt} size="lg" />
+                <FontAwesomeIcon onClick={() => dispatch(updatePopupMode(MODE_EDIT, groupId))} icon={faEdit} size="lg" />
+                <FontAwesomeIcon onClick={() => dispatch(deleteGroup(groupId))} icon={faTrashAlt} size="lg" />
             </span>
         </p>
     )
 }
 
 ItemRow.defaultProps = {
-    item: {},
-    index: 0
+    item: {}
 }
 
 ItemRow.propTypes = {
     item: PropTypes.shape({
+        groupId: PropTypes.number,
         name: PropTypes.string,
-        start: PropTypes.object,
-        end: PropTypes.object,
+        startRange: PropTypes.object,
+        endRange: PropTypes.object,
         internal: PropTypes.bool,
         created: PropTypes.number
-    }).isRequired,
-    index: PropTypes.number.isRequired
+    }).isRequired
 }
 
 export default ItemRow;

@@ -1,27 +1,43 @@
 {
     "groups": [
         {
-            "name": "test1",
-            "start": {
+            "groupId": 1,
+            "name": "test 1",
+            "startRange": {
                 "origin":"192.34.45.1",
                 "number": 3223465217
             },
-            "end" : {
+            "endRange" : {
                 "origin":"192.34.45.10",
-                "number": 3223465217
+                "number": 3223465226
             },
             "internal": true,
             "created": 1633352984
         },
         { 
-            "name": "test second",
-            "start": {
-                "origin":"192.34.45.1",
-                "number": 3223465217
+            "groupId": 2,
+            "name": "test 2",
+            "startRange": {
+                "origin":"192.34.45.11",
+                "number": 3223465227
             },
-            "end" : null,
+            "endRange" : null,
             "internal": false,
             "created": 1633353073
+        },
+        { 
+            "groupId": 3,
+            "name": "test 3",
+            "startRange": {
+                "origin":"192.34.45.12",
+                "number": 3223465228
+            },
+            "endRange": {
+                "origin":"192.34.45.100",
+                "number": 3223465316
+            },
+            "internal": true,
+            "created": 1633355073
         }
     ]
 }

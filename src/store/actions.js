@@ -1,7 +1,5 @@
 import {actionTypes} from './consts';
 
-
-
 export const addGroup = (payload) => {
     return (dispatch) => {
         dispatch({
@@ -29,11 +27,12 @@ export const deleteGroup = (index) => {
     }
 }
 
-export const updatePopupMode = (popupMode) => {
+export const updatePopupMode = (popupMode, groupId) => {
     return (dispatch) => {
         dispatch({
             type: actionTypes.UPDATE_POPUP_MODE,
-            popupMode
+            popupMode,
+            groupId
         })
     }
 }

@@ -13,9 +13,8 @@ export default function App() {
     <div className="testApp">
           <main>
             <button onClick={() => dispatch(updatePopupMode(MODE_ADD))} className="addGroup">Add Group</button>
-            {popupMode && <GroupForm/>}
-            
             <List/> 
+            {popupMode && <GroupForm/>}
           </main>
       </div>
   );

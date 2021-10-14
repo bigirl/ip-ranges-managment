@@ -14,7 +14,7 @@ const List = () => {
             <b>IPs</b>
             <b>Created On</b>
           </p>
-          {groups && groups.length > 0 && groups.map((item, idx) => <ItemRow key={idx} index={idx} item={item}/>)}
+          {groups && groups.length > 0 && groups.map((item, idx) => <ItemRow key={idx} {...item}/>)}
       </section>
     )
   }
